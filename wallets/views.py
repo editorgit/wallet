@@ -9,18 +9,19 @@ class WalletViewSet(viewsets.ModelViewSet):
     queryset = Wallet.objects.all()
     serializer_class = WalletSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    ordering_fields = ['label', 'balance']
-    ordering = ['label']
+    ordering_fields = ["label", "balance"]
+    ordering = ["label"]
 
 
-class TransactionViewSet(mixins.CreateModelMixin,
-                         mixins.RetrieveModelMixin,
-                         mixins.ListModelMixin,
-                         viewsets.GenericViewSet):
-    queryset = Transaction.objects.select_related('wallet').all()
+class TransactionViewSet(
+    mixins.CreateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet,
+):
+    queryset = Transaction.objects.select_related("wallet").all()
     serializer_class = TransactionSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['wallet', 'txid', 'amount']
-    ordering_fields = ['amount', 'created_at']
-    ordering = ['-id']
-
+    filterset_fields = ["wallet", "txid", "amount"]
+    ordering_fields = ["amount", "created_at"]
+    ordering = ["-id"]
