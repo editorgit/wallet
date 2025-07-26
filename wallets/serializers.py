@@ -1,5 +1,6 @@
 from rest_framework_json_api import serializers
-from .models import Wallet, Transaction
+
+from .models import Transaction, Wallet
 
 
 class TransactionSerializer(serializers.ModelSerializer):

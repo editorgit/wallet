@@ -1,11 +1,10 @@
 from django.contrib import admin
-from django.urls import path, include
-
-from rest_framework_json_api.exceptions import exception_handler
+from django.urls import include, path
 from rest_framework.settings import api_settings
-
+from rest_framework_json_api.exceptions import exception_handler
 from rest_framework_nested.routers import DefaultRouter, NestedDefaultRouter
-from wallets.views import WalletViewSet, TransactionViewSet
+
+from wallets.views import TransactionViewSet, WalletViewSet
 
 # Основной router
 router = DefaultRouter()

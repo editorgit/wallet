@@ -1,6 +1,7 @@
+from decimal import Decimal
+
 from django.db import models
 from rest_framework.exceptions import ValidationError
-from decimal import Decimal
 
 
 class Wallet(models.Model):

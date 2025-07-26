@@ -1,8 +1,8 @@
-from rest_framework import viewsets, mixins
-from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Wallet, Transaction
-from .serializers import WalletSerializer, TransactionSerializer
+from rest_framework import filters, mixins, viewsets
+
+from .models import Transaction, Wallet
+from .serializers import TransactionSerializer, WalletSerializer
 
 
 class WalletViewSet(viewsets.ModelViewSet):

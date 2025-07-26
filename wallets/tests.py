@@ -1,7 +1,9 @@
-from django.test import TestCase
-from wallets.models import Wallet, Transaction
-from rest_framework.exceptions import ValidationError
 from decimal import Decimal
+
+from django.test import TestCase
+from rest_framework.exceptions import ValidationError
+
+from wallets.models import Transaction, Wallet
 
 
 class WalletTransactionTests(TestCase):
@@ -13,7 +15,7 @@ class WalletTransactionTests(TestCase):
         self.assertEqual(self.wallet.balance, Decimal("0.00"))
 
     def test_add_positive_transaction(self):
-        tx = Transaction.objects.create(
+        Transaction.objects.create(
             wallet=self.wallet, txid="tx1", amount=Decimal("100.00")
         )
         self.wallet.refresh_from_db()
@@ -23,7 +25,7 @@ class WalletTransactionTests(TestCase):
         Transaction.objects.create(
             wallet=self.wallet, txid="tx2", amount=Decimal("100.00")
         )
-        tx = Transaction.objects.create(
+        Transaction.objects.create(
             wallet=self.wallet, txid="tx3", amount=Decimal("-30.00")
         )
         self.wallet.refresh_from_db()
